@@ -16,17 +16,17 @@ pipeline {
             }
         }
         
-         stage('Maven Test') {
-            steps {
-                echo '----------------- This is a compile phase ----------'
-                sh 'mvn clean test'
-            }
-        }
+        // stage('Maven Test') {
+        //    steps {
+        //        echo '----------------- This is a compile phase ----------'
+        //        sh 'mvn clean test'
+        //    }
+        // }
         
         stage('Maven Build') {
              steps {
                 echo '----------------- This is a build phase ----------'
-                sh 'mvn clean package -DskipTests'
+                sh 'mvn spring-boot:run'
             }
         }
 
