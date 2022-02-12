@@ -1,5 +1,5 @@
-FROM openjdk:11-jdk-alpine
-FROM mysql:8.0.26-alpine
+FROM openjdk:11-jdk
+FROM mysql:8.0.26
 COPY ./target/foodbox-service-rest-0.0.1-SNAPSHOT.jar foodbox-service-rest-0.0.1-SNAPSHOT.jar
 CMD ["java" ,"-jar","foodbox-service-rest-0.0.1-SNAPSHOT.jar"]
 RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
