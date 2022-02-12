@@ -49,7 +49,7 @@ pipeline {
                      else \
                     echo OK; \
                  fi;);
-            docker container run --restart always --name foodbox-service-rest -p 8081:8081 -d foodbox-service-rest
+            docker container run --restart always --name foodbox-service-rest -p 3306:8081 -d foodbox-service-rest
             '''
             }
         }
