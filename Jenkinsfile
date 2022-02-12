@@ -26,7 +26,7 @@ pipeline {
         stage('Maven Build') {
              steps {
                 echo '----------------- This is a build phase ----------'
-                sh 'mvn spring-boot:run'
+                sh 'mvn clean package -DskipTests'
             }
         }
 
