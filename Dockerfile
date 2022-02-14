@@ -7,7 +7,6 @@ FROM maven:3.6.3 AS maven
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-
 # Compile and package the application to an executable JAR
 RUN mvn package 
 
