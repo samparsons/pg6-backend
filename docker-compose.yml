@@ -4,7 +4,7 @@ services:
     image: mysql:latest
     environment:
     - MYSQL_ROOT_PASSWORD=P@ssw0rd
-    - MYSQL_DATABASE=foodboxdb
+    - MYSQL_DATABASE=database
     - MYSQL_USER=user
     - MYSQL_PASSWORD=password
     restart: always
@@ -14,10 +14,12 @@ services:
       - backend
     
   foodbox-service-rest:
-    image: foodbox-service-rest
+    image: foodbox-service-rest:latest
     build:
       context: ./
       dockerfile: Dockerfile
+    environment:
+    - SPRING_DATASOURCE_URL: jdbc:mysql://foodboxdb:3306/database?autoReconnect=true&useSSL=false
     depends_on:
     - foodboxdb
     ports:
