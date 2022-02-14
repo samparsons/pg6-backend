@@ -12,7 +12,7 @@ services:
     ports:
     - 3306:3306
     volumes:
-    - foodboxdb:/var/lib/mysql
+    - foodboxdb:~/var/lib/mysql
     network_mode: host
     
   foodbox-service-rest:
