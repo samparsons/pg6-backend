@@ -5,8 +5,6 @@ services:
     environment:
     - MYSQL_ROOT_PASSWORD=P@ssw0rd
     - MYSQL_DATABASE=database
-    - MYSQL_USER=user
-    - MYSQL_PASSWORD=password
     restart: always
     ports:
     - 3306:3306
@@ -16,7 +14,7 @@ services:
   foodbox-service-rest:
     image: foodbox-service-rest:latest
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile
     depends_on:
     - foodboxdb
