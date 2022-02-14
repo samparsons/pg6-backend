@@ -4,8 +4,10 @@ services:
     container_name: foodboxdb
     image: mysql:latest
     environment:
-    - MYSQL_ROOT_PASSWORD=
+    - MYSQL_ROOT_PASSWORD=rootpasswd
     - MYSQL_DATABASE=foodboxdb
+    - MYSQL_USER=user
+    - MYSQL_PASSWORD=userpasswd
     restart: always
     ports:
     - 3306:3306
