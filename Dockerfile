@@ -2,13 +2,15 @@
 # it has been modified slightly for my use case.
 
 RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+EXPOSE 8081
+EXPOSE 3306
+
 # AS <NAME> to name this stage as maven
 FROM maven:3.6.3 AS maven
 
 WORKDIR /usr/src/app
 COPY . /usr/src/app
-EXPOSE 8081
-EXPOSE 3306
+
 
 # Compile and package the application to an executable JAR
 RUN mvn package 
@@ -24,8 +26,6 @@ WORKDIR /opt/app
 COPY --from=maven /usr/src/app/target/${JAR_FILE} /opt/app/
 
 ENTRYPOINT ["java","-jar","foodbox-service-rest-0.0.1-SNAPSHOT.jar"]
-
-
 
 # old code that didn't seem to work.
 #FROM openjdk:11-jdk
