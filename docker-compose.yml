@@ -1,13 +1,11 @@
 version: '3'
 services:
-  foodbox-db:
-    container_name: foodbox-db
+  foodboxdb:
+    container_name: foodboxdb
     image: mysql:latest
     environment:
-    - MYSQL_ROOT_PASSWORD=P@ssw0rd
-    - MYSQL_DATABASE=foodbox-db
-    - MYSQL_USER=user
-    - MYSQL_PASSWORD=password
+    - MYSQL_ROOT_PASSWORD=
+    - MYSQL_DATABASE=foodboxdb
     restart: always
     ports:
     - 3306:3306
@@ -28,3 +26,5 @@ services:
     restart: always
     network_mode: host
     
+volumes:
+  foodboxdb:
