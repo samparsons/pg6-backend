@@ -13,6 +13,9 @@ services:
     - 3306:3306
     volumes:
     - foodbox-db:/var/lib/mysql
+    networks:
+      - backend
+    
   foodbox-service-rest:
     container_name: foodbox-service-rest
     image: foodbox-service-rest
@@ -24,5 +27,12 @@ services:
     ports:
     - 8081:8081
     restart: always
+    networks:
+      - backend
+
+networks: 
+  backend: 
+    
 volumes:
   foodbox-db:
+
