@@ -19,7 +19,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     environment:
-    - SPRING_DATASOURCE_URL: jdbc:mysql://foodboxdb:3306/database?autoReconnect=true&useSSL=false
+    - SPRING_DATASOURCE_URL:jdbc:mysql://foodboxdb:3306/database?autoReconnect=true&useSSL=false&enabledTLSProtocols=TLSv1.2
     depends_on:
     - foodboxdb
     ports:
