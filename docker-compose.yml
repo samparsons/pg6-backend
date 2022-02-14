@@ -10,7 +10,7 @@ services:
     ports:
     - 3306:3306
     networks:
-      - backend
+      - host
     
   foodbox-service-rest:
     image: foodbox-service-rest:latest
@@ -28,8 +28,8 @@ services:
     - 8081:8081
     restart: always
     networks:
-      - backend
+      - host
 
 networks: 
-  backend: 
+  host: 
     
