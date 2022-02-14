@@ -10,7 +10,7 @@ services:
     ports:
     - 3306:3306
     volumes:
-    - foodbox-db:/var/lib/mysql
+    - foodboxdb:/var/lib/mysql
     network_mode: host
     
   foodbox-service-rest:
@@ -20,7 +20,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     depends_on:
-    - foodbox-db
+    - foodboxdb
     ports:
     - 8081:8081
     restart: always
