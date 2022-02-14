@@ -5,7 +5,7 @@ services:
     image: mysql:latest
     environment:
     - MYSQL_ROOT_PASSWORD=P@ssw0rd
-    - MYSQL_DATABASE=foodbox
+    - MYSQL_DATABASE=foodbox-db
     - MYSQL_USER=user
     - MYSQL_PASSWORD=password
     restart: always
