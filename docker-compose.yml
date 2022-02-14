@@ -1,28 +1,28 @@
 version: '3'
 services:
-  foodboxdb:
+  foodbox-db:
+    container_name: foodbox-db
     image: mysql:latest
     environment:
-      - MYSQL_ROOT_PASSWORD=
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=user123
+    - MYSQL_ROOT_PASSWORD=P@ssw0rd
+    - MYSQL_DATABASE=foodbox-db
+    - MYSQL_USER=user
+    - MYSQL_PASSWORD=password
     restart: always
     ports:
     - 3306:3306
+    volumes:
+    - foodbox-db:/var/lib/mysql
     network_mode: host
     
   foodbox-service-rest:
-    image: foodbox-service-rest:latest
+    container_name: foodbox-service-rest
+    image: foodbox-service-rest
     build:
-      context: .
+      context: ./
       dockerfile: Dockerfile
     depends_on:
-    - foodboxdb
-    environment:
-      - DATABASE_USER=user
-      - DATABASE_PASSWORD=user123
-      - DATABASE_URL=jdbc:mysql://foodboxdb:3306/foodboxdb?createDatabaseIfNotExist=true&useSSL=false&enabledTLSProtocols=TLSv1.2
-      - DATABASE_DRIVER=com.mysql.cj.jdbc.Driver
+    - foodbox-db
     ports:
     - 8081:8081
     restart: always
