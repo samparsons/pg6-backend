@@ -9,8 +9,7 @@ services:
     restart: always
     ports:
     - 3306:3306
-    networks:
-      - host
+    network_mode: host
     
   foodbox-service-rest:
     image: foodbox-service-rest:latest
@@ -27,9 +26,5 @@ services:
     ports:
     - 8081:8081
     restart: always
-    networks:
-      - host
-
-networks: 
-  host: 
+    network_mode: host
     
