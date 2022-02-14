@@ -1,6 +1,7 @@
 # code below is from medium tutorial by Wynn Teo, https://medium.com/geekculture/dockerizing-a-spring-boot-application-with-maven-122286e9f582
 # it has been modified slightly for my use case.
 
+RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 # AS <NAME> to name this stage as maven
 FROM maven:3.6.3 AS maven
 
