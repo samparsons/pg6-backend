@@ -25,6 +25,8 @@ COPY --from=maven /usr/src/app/target/${JAR_FILE} /opt/app/
 
 ENTRYPOINT ["java","-jar","foodbox-service-rest-0.0.1-SNAPSHOT.jar"]
 
+
+
 # old code that didn't seem to work.
 #FROM openjdk:11-jdk
 #COPY ./target/foodbox-service-rest-0.0.1-SNAPSHOT.jar foodbox-service-rest-0.0.1-SNAPSHOT.jar
