@@ -5,7 +5,9 @@
 # AS <NAME> to name this stage as maven
 FROM maven:3.6.3 AS maven
 
-
+RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+EXPOSE 8081
+EXPOSE 3306
 
 WORKDIR /usr/src/app
 COPY . /usr/src/app
@@ -14,9 +16,7 @@ RUN mvn package
 
 # For Java 11, 
 FROM adoptopenjdk/openjdk11:alpine-jre
-RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-EXPOSE 8081
-EXPOSE 3306
+
 
 ARG JAR_FILE=foodbox-service-rest-0.0.1-SNAPSHOT.jar
 
