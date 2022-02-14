@@ -1,10 +1,10 @@
 version: '3'
 services:
-  foodbox-db:
+  foodboxdb:
     image: mysql:latest
     environment:
     - MYSQL_ROOT_PASSWORD=P@ssw0rd
-    - MYSQL_DATABASE=foodbox-db
+    - MYSQL_DATABASE=foodboxdb
     - MYSQL_USER=user
     - MYSQL_PASSWORD=password
     restart: always
@@ -19,7 +19,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     depends_on:
-    - foodbox-db
+    - foodboxdb
     ports:
     - 8081:8081
     restart: always
