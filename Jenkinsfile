@@ -4,24 +4,30 @@ pipeline {
     triggers {
         pollSCM('* * * * *')
     }
-    // Got permission denied while trying to connect to the Docker daemon socket at unix.
-    // sudo usermod -a -G docker jenkins
-    // restart jenkins server ->  sudo service jenkins restart
     stages {
+        stage('Docker compose build') {
+            steps {
+                echo '----------------- This is a docker-compose phase ----------'
+                sh 'docker-compose up -d'
+            }
+        }
         
-        stage('Maven Compile') {
+        
+        
+       /* this is the old pipeline code. Maintaining in case of revert!
+        stage('run') {
             steps {
                 echo '----------------- This is a compile phase ----------'
                 sh 'mvn clean compile'
             }
         }
         
-        // stage('Maven Test') {
-        //    steps {
-        //        echo '----------------- This is a compile phase ----------'
-        //        sh 'mvn clean test'
-        //    }
-        // }
+        stage('Maven Test') {
+           steps {
+               echo '----------------- This is a compile phase ----------'
+               sh 'mvn clean test'
+           }
+        }
         
         stage('Maven Build') {
              steps {
@@ -53,5 +59,6 @@ pipeline {
             '''
             }
         }
+        */
     }
 }
