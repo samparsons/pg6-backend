@@ -6,7 +6,7 @@ services:
     - MYSQL_ROOT_PASSWORD=
     - MYSQL_DATABASE=foodboxdb
     - MYSQL_USER=root
-    - MYSQL_PASSWORD=
+    - MYSQL_PASSWORD=pw
     restart: always
     ports: 
     - 3306:3306
@@ -27,7 +27,7 @@ services:
     environment:  
       - DATABASE_HOST=db  
       - DATABASE_USER=root
-      - DATABASE_PASSWORD=  
+      - DATABASE_PASSWORD=pw
       - DATABASE_NAME=foodboxdb  
       - DATABASE_PORT=3306
     
