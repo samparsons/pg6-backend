@@ -35,7 +35,8 @@ WORKDIR /opt/app
 # Copy the foodbox-service-rest-0.0.1-SNAPSHOT.jar from the maven stage to the /opt/app directory of the current stage.
 COPY --from=maven /usr/src/app/target/${JAR_FILE} /opt/app/
 
-ENTRYPOINT ["java","-jar","foodbox-service-rest-0.0.1-SNAPSHOT.jar"]
+#ENTRYPOINT ["java","-jar","foodbox-service-rest-0.0.1-SNAPSHOT.jar"]
+CMD ["java" ,"-jar","foodbox-service-rest-0.0.1-SNAPSHOT.jar"]
 
 # old code that didn't seem to work.
 #FROM openjdk:11-jdk
