@@ -11,6 +11,12 @@ EXPOSE 3306
 
 WORKDIR /usr/src/app
 COPY . /usr/src/app
+
+RUN echo "running in root"
+RUN ls 
+RUN echo "running in /usr/src/app"
+RUN ls /usr/src/app 
+
 # Compile and package the application to an executable JAR
 RUN mvn package -DskipTests
 
@@ -28,7 +34,7 @@ COPY --from=maven /usr/src/app/target/${JAR_FILE} /opt/app/
 ENTRYPOINT ["java","-jar","foodbox-service-rest-0.0.1-SNAPSHOT.jar"]
 
 # old code that didn't seem to work.
-FROM openjdk:11-jdk
-COPY ./target/foodbox-service-rest-0.0.1-SNAPSHOT.jar foodbox-service-rest-0.0.1-SNAPSHOT.jar
-CMD ["java" ,"-jar","foodbox-service-rest-0.0.1-SNAPSHOT.jar"]
-RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+#FROM openjdk:11-jdk
+#COPY ./target/foodbox-service-rest-0.0.1-SNAPSHOT.jar foodbox-service-rest-0.0.1-SNAPSHOT.jar
+#CMD ["java" ,"-jar","foodbox-service-rest-0.0.1-SNAPSHOT.jar"]
+#RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
