@@ -12,7 +12,7 @@ EXPOSE 3306
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 # Compile and package the application to an executable JAR
-RUN mvn package 
+RUN mvn package -DskipTests
 
 # For Java 11, 
 FROM adoptopenjdk/openjdk11:alpine-jre
@@ -28,7 +28,7 @@ COPY --from=maven /usr/src/app/target/${JAR_FILE} /opt/app/
 ENTRYPOINT ["java","-jar","foodbox-service-rest-0.0.1-SNAPSHOT.jar"]
 
 # old code that didn't seem to work.
-#FROM openjdk:11-jdk
-#COPY ./target/foodbox-service-rest-0.0.1-SNAPSHOT.jar foodbox-service-rest-0.0.1-SNAPSHOT.jar
-#CMD ["java" ,"-jar","foodbox-service-rest-0.0.1-SNAPSHOT.jar"]
-#RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+FROM openjdk:11-jdk
+COPY ./target/foodbox-service-rest-0.0.1-SNAPSHOT.jar foodbox-service-rest-0.0.1-SNAPSHOT.jar
+CMD ["java" ,"-jar","foodbox-service-rest-0.0.1-SNAPSHOT.jar"]
+RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers

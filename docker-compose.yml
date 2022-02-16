@@ -1,21 +1,21 @@
 version: '3'
 services:
-  foodboxdb:
-    container_name: foodboxdb
-    image: mysql:8.0.27
+  db: 
+    image: mysql:8
     environment:
-    - MYSQL_ROOT_PASSWORD=rootpasswd
+    - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=foodboxdb
     - MYSQL_USER=user
     - MYSQL_PASSWORD=userpasswd
     restart: always
-    ports:
+    ports: 
     - 3306:3306
     volumes:
-    - foodboxdb:~/var/lib/mysql
+    - foodboxdb:/var/lib/mysql
     
   foodbox-service-rest:
     container_name: foodbox-service-rest
+    restart: on-failure
     image: foodbox-service-rest
     build:
       context: ./
@@ -24,7 +24,12 @@ services:
     - foodboxdb
     ports:
     - 8081:8081
-    restart: always
+    environment:  
+      - DATABASE_HOST=db  
+      - DATABASE_USER=user
+      - DATABASE_PASSWORD=userpasswd  
+      - DATABASE_NAME=foodboxdb  
+      - DATABASE_PORT=3306
     
 volumes:
   foodboxdb:
