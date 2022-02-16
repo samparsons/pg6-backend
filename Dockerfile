@@ -12,13 +12,17 @@ EXPOSE 3306
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 
+
+
+# Compile and package the application to an executable JAR
+RUN mvn package -DskipTests
+
 RUN echo "running in root"
 RUN ls 
 RUN echo "running in /usr/src/app"
 RUN ls /usr/src/app 
-
-# Compile and package the application to an executable JAR
-RUN mvn package -DskipTests
+RUN echo "running in /usr/src/app/target"
+RUN ls /usr/src/app/target
 
 # For Java 11, 
 FROM adoptopenjdk/openjdk11:alpine-jre
