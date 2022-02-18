@@ -17,8 +17,6 @@ COPY . /usr/src/app
 # Compile and package the application to an executable JAR
 RUN mvn package -DskipTests
 
-RUN sleep 120
-
 # For Java 11
 #FROM adoptopenjdk/openjdk11:alpine-jre
 FROM openjdk:11-jdk
