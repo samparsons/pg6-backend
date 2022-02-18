@@ -17,16 +17,11 @@ COPY . /usr/src/app
 # Compile and package the application to an executable JAR
 RUN mvn package -DskipTests
 
-RUN echo "running in root"
-RUN ls 
-RUN echo "running in /usr/src/app"
-RUN ls /usr/src/app 
-RUN echo "running in /usr/src/app/target"
-RUN ls /usr/src/app/target
+RUN sleep 120
 
-# For Java 11, 
-FROM adoptopenjdk/openjdk11:alpine-jre
-
+# For Java 11
+#FROM adoptopenjdk/openjdk11:alpine-jre
+FROM openjdk:11-jdk
 
 ARG JAR_FILE=foodbox-service-rest-0.0.1-SNAPSHOT.jar
 
