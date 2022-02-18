@@ -8,7 +8,7 @@ pipeline {
         stage('Docker compose build') {
             steps {
                 echo '----------------- This is a docker-compose phase ----------'
-                sh 'docker-compose foodbox-service-rest up -d --force-recreate --remove-orphans --build'
+                sh 'docker-compose up -d --force-recreate --remove-orphans --build'
             }
         }
     }
