@@ -12,7 +12,7 @@ EXPOSE 3306
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 
-RUN sleep 120
+RUN sleep 15
 
 # Compile and package the application to an executable JAR
 RUN mvn package -DskipTests
