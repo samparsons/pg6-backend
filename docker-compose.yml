@@ -23,9 +23,7 @@ services:
     ports:
     - 8081:8081
     environment:  
-      - DATABASE_HOST=db  
-      - DATABASE_USER=
-      - DATABASE_PASSWORD=
+      - DATABASE_HOST=db
       - DATABASE_NAME=foodboxdb
       - DATABASE_PORT=3306
     
