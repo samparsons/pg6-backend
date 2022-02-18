@@ -3,10 +3,8 @@ services:
   db: 
     image: mysql:8
     environment:
-    - MYSQL_ROOT_PASSWORD=pw
+    - MYSQL_ALLOW_EMPTY_PASSWORD
     - MYSQL_DATABASE=foodboxdb
-    - MYSQL_USER=root
-    - MYSQL_PASSWORD=pw
     restart: always
     ports: 
     - 3306:3306
